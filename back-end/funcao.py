@@ -19,3 +19,5 @@ def criar_tabela():
         finally:
             cursor.close()
             conexao.commit()
+
+criar_tabela()   
