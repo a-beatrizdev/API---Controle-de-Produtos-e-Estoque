@@ -40,5 +40,21 @@ def cadastrar_produto(nome, categoria, preco, quantidade):
 cadastrar_produto("Camisa Polo", "Roupa", 35.62, 3) 
 
 
+def listar_produto():
+    conexao, cursor = conector()
+    if conexao:
+        try:
+            cursor.execute(
+            "SELECT * FROM produtos ORDER BY id"    
+            )
+            return cursor.fetchall()
+        except Exception as erro:
+            print(f"Erro ao listar os produtos {erro}")
+            return []
+        finally:
+            cursor.close()
+            conexao.commit()
+
+listar_produto() 
 
     
