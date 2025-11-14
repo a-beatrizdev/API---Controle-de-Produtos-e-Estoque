@@ -49,5 +49,22 @@ elif menu == "Cadastrar Produtos":
         else:
             st.warning("Preencha todos os campos obrigatórios.")
 
+elif menu == "Atualizar Produtos":
+    st.subheader("✏ Atualizar produto")
+    id_produto = st.number_input("ID do produto", min_value=1, step=1)
+    novo_preco = st.number_input("Novo preço", min_value=0.0, format="%.2f")
+    nova_quantidade = st.number_input("Nova quantidade", min_value=0, step=1)
+    if st.button("Atualizar"):
+        params = {
+            "novo_preco": novo_preco,
+            "nova_quantidade": nova_quantidade,
+        }
+        response = requests.put(f"{API_URL}/produtos/{id_produto}", params=params)
+        if response.status_code == 200:
+            msg = response.json()
+            st.success(msg.get("mensagem", "Produto atualizado!"))
+        else:
+            st.error("Erro ao atualizar o produto.")
+
 
 
