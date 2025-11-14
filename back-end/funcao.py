@@ -20,7 +20,6 @@ def criar_tabela():
             cursor.close()
             conexao.commit()
 
-criar_tabela()
 
 def cadastrar_produto(nome, categoria, preco, quantidade):
     conexao, cursor = conector()
@@ -36,8 +35,6 @@ def cadastrar_produto(nome, categoria, preco, quantidade):
         finally:
             cursor.close()
             conexao.commit()
-
-cadastrar_produto("Camisa Polo", "Roupa", 35.62, 3) 
 
 
 def listar_produto():
@@ -55,6 +52,35 @@ def listar_produto():
             cursor.close()
             conexao.commit()
 
-listar_produto() 
+
+def atualizar_produto(id, novo_preco, nova_quantidade):
+    conexao, cursor = conector()
+    if conexao:
+        try:
+            cursor.execute(
+                "UPDATE produtos SET preco = %s, quantidade = %s WHERE id = %s", (novo_preco, nova_quantidade, id)
+            )
+            conexao.commit()
+            if cursor.rowcount > 0:
+                print("Produto atualizado com sucesso!")
+            else:
+                print("Nenhum produto encontrado com esse ID.")
+        except Exception as erro:
+            print(f"Erro ao tentar atualizar produto: {erro}")
+        finally:
+            cursor.close()
+            conexao.commit()
+
+atualizar_produto(1, 40, 5) 
+        
+    
+
+
+
+
+
+
+
+
 
     
