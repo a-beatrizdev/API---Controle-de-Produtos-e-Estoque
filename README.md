@@ -26,12 +26,12 @@ Entre na pasta front-end
 python -m streamlit run app.py 
 
 ## Instalar o requirements.txt
-Entre no ambiente virtual .venv
+- Entre no ambiente virtual .venv
 Windows (PowerShell): 
 .\\.venv\Scripts\activate
 
 Linux/Mac:
 source .venv/bin/activate
 
-pip install -r requirements.txt
+pip install -r requirements.txt 
 
