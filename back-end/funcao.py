@@ -71,7 +71,13 @@ def atualizar_produto(id, novo_preco, nova_quantidade):
             cursor.close()
             conexao.commit()
 
-atualizar_produto(1, 40, 5) 
+def deletar_produto(id):
+    conexao, cursor = conector()
+    if conexao:
+        try:
+            cursor.execute(
+                "DELETE from"
+            )
         
     
 
