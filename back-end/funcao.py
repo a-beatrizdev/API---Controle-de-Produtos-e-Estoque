@@ -76,9 +76,20 @@ def deletar_produto(id):
     if conexao:
         try:
             cursor.execute(
-                "DELETE from"
+                "DELETE from produtos WHERE id = %s", (id,)
             )
-        
+            conexao.commit()
+            if cursor.rowcount > 0:
+                print("Produto removido com sucesso!")
+            else:
+                print("Nenhum produto foi encontrado em nosso estoque.")
+        except Exception as erro:
+            print(f"Erro ao tentar deletar produto: {erro}")
+        finally:
+            cursor.close()
+            conexao.commit()
+
+    
     
 
 
